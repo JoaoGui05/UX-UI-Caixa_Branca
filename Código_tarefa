@@ -1,21 +1,23 @@
 package login;
-
+// Métodos de importação para a conexãõ com o banco de dados
 import java.sql.Connection;
-import java.sql.DriveManager;
+import java.sql.DriveManager; // Erro encontrado: A nomenclatura é DriverManager (em todo o código)
 import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class User {
+// Linha de conexão com o banco de dados
     public Connection conectarBD() {
         Connection conn = null;
         try {
             Class.forName("com.mysql.Drive.Manager").newInstance();
-            String url = "jdbc:mysql://127.0.0.1/test?user=lopes$password=123";
+            String url = "jdbc:mysql://127.0.0.1/test?user=lopes$password=123"; // Para a correção os parãmetros devem ser separados por "&"
             conn = DriveManager.getConnection(url);
-        }catch (Exception e) {  }
+        }catch (Exception e) {  } // Excessões vazias
         return conn; }
-    public String nome="";
-    public boolean result = false;
+    public String nome=""; // Variável genéria, seria melhor "nome_usuario"
+    public boolean result = false; // Variável não utilizada
+
     public boolean verificarUsuario(String login, String senha) {
         String sql = "";
         Connection conn = conectarBD();
@@ -31,4 +33,5 @@ public class User {
                 nome = rs.getString("nome"); }
         }catch (Exception e) {  }
         return result; }
+// Conexão não fechada
     }//Fim da class
