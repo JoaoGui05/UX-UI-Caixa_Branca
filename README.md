@@ -3,7 +3,9 @@
 - Quantidade de pontos: 14
 - Nodos:
 N1: Início da execução do código "public class User {".
+
 N2: Chamada para o método conectarBD() " public Connection conectarBD() {".
+
 N3: Carregamento do driver MySQL " Class.forName("com.mysql.Drive.Manager").newInstance();".
 N4: Definição da URL de conexão "String url = "jdbc:mysql://127.0.0.1/test?user=lopes$password=123";".
 N5: Tentativa de conexão com o banco de dados "conn = DriveManager.getConnection(url);".
