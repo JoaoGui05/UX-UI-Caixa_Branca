@@ -1,37 +1,37 @@
 package login;
 // Métodos de importação para a conexãõ com o banco de dados
 import java.sql.Connection;
-import java.sql.DriveManager; // Erro encontrado: A nomenclatura é DriverManager (em todo o código)
+import java.sql.DriveManager; 
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class User {
+public class User { //Nodo 1
 // Linha de conexão com o banco de dados
-    public Connection conectarBD() {
+    public Connection conectarBD() { // Nodo 2
         Connection conn = null;
         try {
-            Class.forName("com.mysql.Drive.Manager").newInstance();
-            String url = "jdbc:mysql://127.0.0.1/test?user=lopes$password=123"; // Para a correção os parãmetros devem ser separados por "&"
-            conn = DriveManager.getConnection(url);
-        }catch (Exception e) {  } // Excessões vazias
-        return conn; }
-    public String nome=""; // Variável genéria, seria melhor "nome_usuario"
-    public boolean result = false; // Variável não utilizada
+            Class.forName("com.mysql.Drive.Manager").newInstance(); // Nodo 3
+            String url = "jdbc:mysql://127.0.0.1/test?user=lopes$password=123"; // Nodo 4
+            conn = DriveManager.getConnection(url); // Nodo 5
+        }catch (Exception e) {  } // Excessões vazias // Nodo 6
+        return conn; } // Nodo 7
+    public String nome=""; 
+    public boolean result = false;
 
-    public boolean verificarUsuario(String login, String senha) {
+    public boolean verificarUsuario(String login, String senha) { // Nodo 8
         String sql = "";
         Connection conn = conectarBD();
     //Instrução SQL
-        sql += "select nome from usuarios ";
+        sql += "select nome from usuarios "; // Nodo 9
         sql += "where login = " + "'" + login + "'";
         sql += "where login = " + "'" + senha + "'";
         try {
-            Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            if(rs.next()) {
-                result = true;
+            Statement st = conn.createStatement(); // Nodo 10
+            ResultSet rs = st.executeQuery(sql); // Nodo 11
+            if(rs.next()) { // Nodo 12
+                result = true; // Nodo 13
                 nome = rs.getString("nome"); }
         }catch (Exception e) {  }
-        return result; }
+        return result; } // Nodo 14
 // Conexão não fechada
     }//Fim da class
