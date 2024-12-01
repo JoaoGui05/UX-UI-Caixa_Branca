@@ -5,33 +5,33 @@ import java.sql.DriveManager; // Erro encontrado: A nomenclatura é DriverManage
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class User {
+public class User { // Inicio da classe pública "Usuario"
 // Linha de conexão com o banco de dados
-    public Connection conectarBD() {
-        Connection conn = null;
-        try {
+    public Connection conectarBD() { // Método para estabelecer a conexão com o banco de dados
+        Connection conn = null; // Inicialização da variável 'conn'
+        try { // Método para carregar o driver e a URL
             Class.forName("com.mysql.Drive.Manager").newInstance();
             String url = "jdbc:mysql://127.0.0.1/test?user=lopes$password=123"; // Para a correção os parãmetros devem ser separados por "&"
             conn = DriveManager.getConnection(url);
         }catch (Exception e) {  } // Excessões vazias
         return conn; }
-    public String nome=""; // Variável genéria, seria melhor "nome_usuario"
-    public boolean result = false; // Variável não utilizada
+    public String nome=""; // Variável para definir o nome do usuário
+    public boolean result = false; // Variável para validar o usuário
 
-    public boolean verificarUsuario(String login, String senha) {
-        String sql = "";
-        Connection conn = conectarBD();
+    public boolean verificarUsuario(String login, String senha) { // Função do código para definir o usuário
+        String sql = ""; // Linha para fazer o query SQL
+        Connection conn = conectarBD(); // Linha que faz a conexão
     //Instrução SQL
         sql += "select nome from usuarios ";
         sql += "where login = " + "'" + login + "'";
         sql += "where login = " + "'" + senha + "'"; // Erro encontrado: a variável "where" está duplicada, na 2° linha deveria ser usado "and"
         try {
-            Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            if(rs.next()) {
+            Statement st = conn.createStatement(); // Um steatment para a consulta do SQL
+            ResultSet rs = st.executeQuery(sql); // Linha para mostrar o resultado
+            if(rs.next()) { // Método condicional para atualizar o usuário
                 result = true;
                 nome = rs.getString("nome"); }
-        }catch (Exception e) {  }
-        return result; }
+        }catch (Exception e) {  } // Exessão vazia
+        return result; } // Retornar resultado
 // Conexão não fechada
     }//Fim da class
