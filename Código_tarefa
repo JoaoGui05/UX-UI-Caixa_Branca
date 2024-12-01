@@ -24,7 +24,7 @@ public class User {
     //Instrução SQL
         sql += "select nome from usuarios ";
         sql += "where login = " + "'" + login + "'";
-        sql += "where login = " + "'" + senha + "'";
+        sql += "where login = " + "'" + senha + "'"; // Erro encontrado: a variável "where" está duplicada, na 2° linha deveria ser usado "and"
         try {
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(sql);
