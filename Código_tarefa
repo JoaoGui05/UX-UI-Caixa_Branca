@@ -20,18 +20,18 @@ public class User { //Nodo 1
 
     public boolean verificarUsuario(String login, String senha) { // Nodo 8
         String sql = "";
-        Connection conn = conectarBD();
+        Connection conn = conectarBD(); // Nodo 9
     //Instrução SQL
-        sql += "select nome from usuarios "; // Nodo 9
+        sql += "select nome from usuarios "; // Nodo 10
         sql += "where login = " + "'" + login + "'";
         sql += "where login = " + "'" + senha + "'";
         try {
-            Statement st = conn.createStatement(); // Nodo 10
-            ResultSet rs = st.executeQuery(sql); // Nodo 11
-            if(rs.next()) { // Nodo 12
-                result = true; // Nodo 13
-                nome = rs.getString("nome"); }
-        }catch (Exception e) {  }
-        return result; } // Nodo 14
+            Statement st = conn.createStatement(); // Nodo 11
+            ResultSet rs = st.executeQuery(sql); // Nodo 12
+            if(rs.next()) { // Nodo 13
+                result = true; // Nodo 14
+                nome = rs.getString("nome"); } // 15
+        }catch (Exception e) {  } // Nodo 16
+        return result; } // Nodo 17
 // Conexão não fechada
     }//Fim da class
