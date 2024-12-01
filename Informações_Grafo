@@ -1,33 +1,40 @@
 # Informações do Grafo
 Identificação dos Pontos, Nodos e Arestas
-- Quantidade de pontos: 14
+- Quantidade de pontos: 17
 - Nodos:
-N1: Início da execução do código "public class User {".
-N2: Chamada para o método conectarBD() " public Connection conectarBD() {".
-N3: Carregamento do driver MySQL " Class.forName("com.mysql.Drive.Manager").newInstance();".
-N4: Definição da URL de conexão "String url = "jdbc:mysql://127.0.0.1/test?user=lopes$password=123";".
-N5: Tentativa de conexão com o banco de dados "conn = DriveManager.getConnection(url);".
-N6: Tratamento de exceção "}catch (Exception e) { }".
-N7: Retorno da conexão "return conn;".
-N8: Execução do método verificarUsuario() "public boolean verificarUsuario(String login, String senha) {".
-N9: Construção da consulta SQL "sql += "select nome from usuarios "; sql += "where login = '" + login + "'"; sql += "where senha = '" + senha + "'";".
-N10: Criação do Statement "Statement st = conn.createStatement();".
-N11: Execução da consulta SQL "ResultSet rs = st.executeQuery(sql);".
-N12: Verificação do resultado da consulta "if (rs.next()) {".
-N13: Atribuição de valor para result "result = true;".
-N14: Retorno do resultado de result "return result;".
+N1: Início da execução do código - Declaração da classe User: "public class User {".
+N2: Início do método conectarBD() - Declaração do método public Connection conectarBD() {.
+N3: Carregamento do driver MySQL - "Class.forName("com.mysql.Drive.Manager").newInstance();" (erro de digitação no código original, deve ser com.mysql.cj.jdbc.Driver).
+N4: Definição da URL de conexão com o banco de dados: "String url = "jdbc:mysql://127.0.0.1/test?user=lopes$password=123";".
+N5: Tentativa de conexão com o banco de dados: "conn = DriverManager.getConnection(url);" (erro no código original, DriveManager deveria ser DriverManager).
+N6: Tratamento de exceção vazio no bloco catch: "}catch (Exception e) { }".
+N7: Retorno da conexão ao método chamador: "return conn;".
+N8: Início do método verificarUsuario() - Declaração do método public boolean verificarUsuario(String login, String senha) {.
+N9: Construção da consulta SQL para verificação do login e senha: "sql += "select nome from usuarios "; sql += "where login = '" + login + "'"; sql += "where senha = '" + senha + "'";"
+N10: Criação do Statement para executar a consulta: "Statement st = conn.createStatement();"
+N11: Execução da consulta SQL: "ResultSet rs = st.executeQuery(sql);"
+N12: Verificação se há resultados no ResultSet: "if (rs.next()) {".
+N13: Atribuição do valor true à variável result caso a consulta retorne um valor: "result = true;".
+N14: Atribuição do nome do usuário ao campo nome: "nome = rs.getString("nome");"
+N15: Fechamento do bloco: if(rs.next()): "}"
+N16: Fechamento do bloco: catch (Exception e): "}"
+N17: Retorno do valor de result ao método chamador: "return result;".
 
-- Arestas:
+-Arestas:
 A1: Da execução inicial (N1) para a chamada do método conectarBD() (N2).
-A2: Do N2 para o carregamento do driver (N3).
+A2: Do N2 para o carregamento do driver MySQL (N3).
 A3: Do N3 para a definição da URL de conexão (N4).
 A4: Do N4 para a tentativa de conexão (N5).
-A5: Do N5 para o tratamento de exceção (N6).
+A5: Do N5 para o tratamento de exceção (N6), caso ocorra falha na conexão.
 A6: Do N6 para o retorno da conexão (N7).
 A7: Do N7 para a execução do método verificarUsuario() (N8).
 A8: Do N8 para a construção da consulta SQL (N9).
 A9: Do N9 para a criação do Statement (N10).
 A10: Do N10 para a execução da consulta SQL (N11).
 A11: Do N11 para a verificação do resultado da consulta (N12).
-A12: Do N12 para a atribuição de valor a result (N13).
-A13: Do N13 para o retorno do valor de result (N14).
+A12: Do N12 para a atribuição do valor true à variável result (N13).
+A13: Do N13 para a atribuição do nome ao campo nome (N14).
+A14: Do N14 para o fechamento do bloco if(rs.next()) (N15).
+A15: Do N15 para o fechamento do bloco catch (Exception e) (N16).
+A16: Do N16 para o retorno do valor de result (N17).
+A17: Do N12 para o bloco catch caso o rs.next() não seja verdadeiro (N16).
